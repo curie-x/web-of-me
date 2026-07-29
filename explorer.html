@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Explorer | Shahadat Hossain</title>
+    
+    <!-- Cleaned standard favicon browser signature link -->
+    <link rel="icon" type="image" href="images/logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Shared Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="https://www.shahadathossain.in" class="nav-logo">
+                <img src="images/logo.png" alt="Shahadat Hossain Logo" class="nav-logo-img">
+            </a>
+            
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#purpose">Purpose</a>
+                <a href="photography.html">Photography</a>
+                <a href="email.html" class="nav-btn">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Explorer Workspace -->
+    <main class="container">
+        <header class="hero-section">
+            <div class="badge">System Root</div>
+            <h1><span class="emoji">📂</span> Shahadat's Drive (D:)</h1>
+            <p class="subtitle">Click through the directories below to explore my profile data dynamically.</p>
+        </header>
+
+        <div class="explorer-window">
+            <aside class="explorer-sidebar">
+                <div class="sidebar-title">Quick access</div>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item active" onclick="openFolder('root')">💻 This PC</li>
+                </ul>
+            </aside>
+
+            <section class="explorer-main">
+                <!-- Main Folder Display Grid -->
+                <div id="explorer-grid" class="explorer-grid">
+                    
+                    <div class="folder-item" onclick="openFolder('more_collection')">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-name">More Collection</div>
+                    </div>
+                    <div class="folder-item" onclick="openFolder('soft_september')">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-name">Soft September Trip</div>
+                    </div>
+                    <div class="folder-item" onclick="openFolder('april_ride')">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-name">April Ride</div>
+                    </div>
+                    <div class="folder-item" onclick="openFolder('rohini_waterfall')">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-name">Rohini Waterfall</div>
+                    </div>
+                    <div class="folder-item" onclick="openFolder('february_darjiling')">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-name">February's Darjiling</div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Content Display -->
+                <div id="explorer-content" class="explorer-content" style="display: none;">
+                    <button class="back-btn" onclick="goBackToGrid()">&larr; Back to Drive (D:)</button>
+                    <div id="content-body"></div>
+                </div>
+                
+            </section>
+        </div>
+    </main>
+
+    <!-- Full Screen Lightbox Modal Structure -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" alt="Full screen view">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Shahadat Hossain. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Database storing directory components
+        const fileSystem = {
+            february_darjiling: `
+                <h2>🖼️ February's Darjiling</h2>
+                <hr class="explorer-hr">
+                <p class="gallery-desc">A premium selection of highlight captures featured directly out of my drive root layout.</p>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item-wrapper"><img src="images/photo3.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo4.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo7.jpg" class="gallery-item lightbox-trigger"></div>
+                </div>
+            `,
+            april_ride: `
+                <h2>🛵 April Ride </h2>
+                <hr class="explorer-hr">
+                <p class="gallery-desc">Moments captured during my travels throughout April .</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item-wrapper"><img src="images/photo21.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo10.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo9.jpg" class="gallery-item lightbox-trigger"></div>
+                </div>
+            `,
+            soft_september: `
+                <h2>🎠 Soft September Trip</h2>
+                <hr class="explorer-hr">
+                <p class="gallery-desc">Memories and scenic captures from my September adventures.</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item-wrapper"><img src="images/photo8.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo11.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo19.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo16.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo17.jpg" class="gallery-item lightbox-trigger"></div>
+                </div>
+            `,
+            rohini_waterfall: `
+                <h2>🌊 Rohini Waterfall</h2>
+                <hr class="explorer-hr">
+                <p class="gallery-desc">A serene collection of images from the Rohini Waterfall trip.</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item-wrapper"><img src="images/photo8.jpeg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo22.jpg" class="gallery-item lightbox-trigger"></div>
+                </div>
+            `,
+            more_collection: `
+                <h2>📸 More Collection</h2>
+                <hr class="explorer-hr">
+                <p class="gallery-desc">A broader selection of my photography work, showcasing various moments and perspectives.</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item-wrapper"><img src="images/photo13.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo14.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo15.jpg" class="gallery-item lightbox-trigger"></div>
+                </div>
+            `
+        };
+
+        // Modal elements cache
+        const lightbox = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        function openFolder(folderKey) {
+            const grid = document.getElementById('explorer-grid');
+            const contentDiv = document.getElementById('explorer-content');
+            const contentBody = document.getElementById('content-body');
+            
+            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+            
+            if (folderKey === 'root') {
+                goBackToGrid();
+                return;
+            }
+
+            const targetSidebarItem = Array.from(document.querySelectorAll('.sidebar-item'))
+                .find(item => item.getAttribute('onclick').includes(`'${folderKey}'`));
+            if (targetSidebarItem) targetSidebarItem.classList.add('active');
+
+            grid.style.display = 'none';
+            contentDiv.style.display = 'block';
+            contentBody.innerHTML = fileSystem[folderKey];
+
+            // Setup listeners dynamically for the new elements loaded inside the folder
+            setupLightboxTriggers();
+        }
+
+        function goBackToGrid() {
+            document.getElementById('explorer-grid').style.display = 'grid';
+            document.getElementById('explorer-content').style.display = 'none';
+            
+            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+            document.querySelector('.sidebar-list li:first-child').classList.add('active');
+        }
+
+        // Binds full-screen functionality onto the active pictures
+        function setupLightboxTriggers() {
+            document.querySelectorAll('.lightbox-trigger').forEach(img => {
+                img.onclick = function() {
+                    lightbox.style.display = "flex";
+                    lightboxImg.src = this.src;
+                    lightboxCaption.innerHTML = this.alt || "Shahadat Hossain © 2026";
+                }
+            });
+        }
+
+        // Close full screen on close-button tap
+        closeBtn.onclick = function() {
+            lightbox.style.display = "none";
+        }
+
+        // Close full screen if background is clicked
+        lightbox.onclick = function(e) {
+            if (e.target !== lightboxImg && e.target !== lightboxCaption) {
+                lightbox.style.display = "none";
+            }
+        }
+
+        // Mobile responsive navbar controls
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

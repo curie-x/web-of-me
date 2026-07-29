@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahadat Hossain | Professional Portfolio</title>
+    
+    <link rel="icon" type="image" href="images/logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <nav class="navbar">
+        <div class="nav-container">
+         <a href="https://www.shahadathossain.in" class="nav-logo">
+    <img src="images/logo.png" alt="Shahadat Hossain Logo" class="nav-logo-img">
+</a>
+            
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#purpose">Purpose</a>
+                <a href="photography.html">Photography</a>
+                <a href="email.html" class="nav-btn active">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        <header class="hero-section">
+            <div class="badge">Get In Touch</div>
+            <h1><span class="emoji">✉️</span> Send a Message</h1>
+            <p class="subtitle">Have a question or want to work together? Drop me a line below.</p>
+        </header>
+
+        <div class="contact-form-card">
+            <form action="https://formspree.io/f/mqergnnr" method="POST" class="custom-form">
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your email*</label>
+                    <input type="email" id="email" name="email" placeholder="Your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message*</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                </div>
+
+                <div class="form-submit-container">
+                    <button type="submit" class="form-submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Shahadat Hossain. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

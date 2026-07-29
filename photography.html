@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahadat Hossain | Professional Portfolio</title>
+    
+    <link rel="icon" type="image" href="images/logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+<body>
+
+   <nav class="navbar">
+        <div class="nav-container">
+         <a href="https://www.shahadathossain.in" class="nav-logo">
+    <img src="images/logo.png" alt="Shahadat Hossain Logo" class="nav-logo-img">
+</a>
+            
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#purpose">Purpose</a>
+                <a href="photography.html" class="active">Photography</a>
+                <a href="email.html" class="nav-btn">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Photography Content -->
+    <main class="container">
+        <header class="hero-section">
+            <div class="badge">Visual Journal</div>
+            <h1><span class="emoji">📸</span> Captured by Me</h1>
+            <p class="subtitle">A curation of moments, calm spaces, and perspective through my lens.</p>
+        </header>
+
+        <section class="profile-card">
+            <p class="gallery-desc">
+                Welcome to my visual gallery. Rather than spending time on fleeting reels, take a moment to engage with images that inspire a more positive, thoughtful, and calm mood.
+            </p>
+            
+            <div class="gallery-grid">
+                <!-- Added a utility class 'lightbox-trigger' to make these clickable -->
+                <div class="gallery-item-wrapper"><img src="images/photo1.jpg" alt="Calm landscape by Shahadat" class="gallery-item lightbox-trigger"></div>
+                <div class="gallery-item-wrapper"><img src="images/photo2.jpg" alt="Reflective capture by Shahadat" class="gallery-item lightbox-trigger"></div>
+                <div class="gallery-item-wrapper"><img src="images/photo20.jpg" alt="Thoughtful moment by Shahadat" class="gallery-item lightbox-trigger"></div>
+                <div class="gallery-item-wrapper"><img src="images/photo12.jpg" alt="Nature capture by Shahadat" class="gallery-item lightbox-trigger"></div>
+                <div class="gallery-item-wrapper"><img src="images/photo5.jpg" alt="Shahadat on the photo" class="gallery-item lightbox-trigger"></div>
+                <div class="gallery-item-wrapper"><img src="images/photo6.jpeg" alt="River scene by Shahadat" class="gallery-item lightbox-trigger"></div>
+                
+            </div>
+        
+
+            <div class="more-photos-container">
+                <a href="explorer.html" class="more-btn">
+                    More Collection <span>&rarr;</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- NEW: Full Screen Lightbox Modal Structure -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" alt="Full screen view">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Shahadat Hossain. All rights reserved.</p>
+    </footer>
+
+    <!-- Script to handle Mobile Drawer AND Full Screen Lightbox functionality -->
+    <script>
+        // --- Mobile Menu Drawer Logic ---
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // --- NEW: Full Screen Lightbox Logic ---
+        const lightbox = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Target all images with the lightbox-trigger class
+        document.querySelectorAll('.lightbox-trigger').forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = "flex";          // Show the modal backdrop
+                lightboxImg.src = img.src;                 // Clone clicked image source
+                lightboxCaption.innerHTML = img.alt;       // Use image 'alt' tag as text caption
+            });
+        });
+
+        // Close the window if the 'X' button is clicked
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = "none";
+        });
+
+        // Close the window if the user clicks anywhere outside the image background
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg && e.target !== lightboxCaption) {
+                lightbox.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahadat Hossain | Professional Portfolio</title>
+    
+    <link rel="icon" type="image" href="images/logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+         <a href="https://www.shahadathossain.in" class="nav-logo">
+    <img src="images/logo.png" alt="Shahadat Hossain Logo" class="nav-logo-img">
+</a>
+            
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#purpose">Purpose</a>
+                <a href="photography.html">Photography</a>
+                <a href="email.html" class="nav-btn">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="badge">👋 Hello</div>
+            <h1><span class="emoji">👋</span> Hello, I’m Shahadat Hossain</h1>
+            <p class="subtitle">Building things for the web from a quiet corner in Samsi, Malda.</p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/shahadat-hossain-04b793372/" target="_blank" class="social-icon linkedin">LinkedIn</a>
+                <a href="https://github.com/curie-x" target="_blank" class="social-icon github">GitHub</a>
+                <a href="https://www.instagram.com/shahadat.exe/" target="_blank" class="social-icon instagram">Instagram</a>
+                <a href="https://www.facebook.com/ShahadatHossainFB" target="_blank" class="social-icon facebook">Facebook</a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="profile-card">
+            <h2>Welcome to My Corner of the Internet</h2>
+            <p>I come from a small, calm town called Samsi in Malda. Life here moves a bit slower—but that’s where I’ve built my dreams, step by step.</p>
+            <p>Right now, I’m pursuing my Bachelor’s in Computer Applications (BCA) from Siliguri Institute of Technology, under MAKAUT University. Moving from a small town to building interactive interfaces on the web is a journey that genuinely excites me.</p>
+        </section>
+
+        <!-- Purpose Grid Layout -->
+        <div id="purpose" class="grid-layout">
+            <section class="profile-card">
+                <h2>🌱 Why This Website?</h2>
+                <p>Honestly… this is my very first website. This page is a starting point—a space where I can document my ideas, track my learning journey, and eventually showcase the software projects I build in the future.</p>
+            </section>
+
+            <section class="profile-card">
+                <h2>💡 What’s Next?</h2>
+                <p>I’m diving deep into development, mapping out software projects that will help me learn, grow, and hopefully inspire someone else along the way. This digital space will evolve right alongside me.</p>
+            </section>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="profile-card contact-section">
+            <h2>Let's Build Something Together</h2>
+            <p>Whether you want to discuss technology, development, or photography, feel free to reach out via my social handles above or drop an email.</p>
+            <a href="email.html" class="email-btn">Drop an Email</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Shahadat Hossain. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
