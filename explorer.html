@@ -107,20 +107,20 @@
                 <p class="gallery-desc">A premium selection of highlight captures featured directly out of my drive root layout.</p>
 
                 <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo3.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo4.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo7.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo3.jpg" class="gallery-item lightbox-trigger" alt="Darjiling Photo 3"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo4.jpg" class="gallery-item lightbox-trigger" alt="Darjiling Photo 4"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo7.jpg" class="gallery-item lightbox-trigger" alt="Darjiling Photo 7"></div>
                 </div>
             `,
             april_ride: `
                 <h2>🛵 April Ride </h2>
                 <hr class="explorer-hr">
-                <p class="gallery-desc">Moments captured during my travels throughout April .</p>
+                <p class="gallery-desc">Moments captured during my travels throughout April.</p>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo21.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo10.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo9.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo21.jpg" class="gallery-item lightbox-trigger" alt="April Ride Photo 21"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo10.jpg" class="gallery-item lightbox-trigger" alt="April Ride Photo 10"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo9.jpg" class="gallery-item lightbox-trigger" alt="April Ride Photo 9"></div>
                 </div>
             `,
             soft_september: `
@@ -129,11 +129,23 @@
                 <p class="gallery-desc">Memories and scenic captures from my September adventures.</p>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo8.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo11.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo19.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo16.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo17.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo8.jpg" class="gallery-item lightbox-trigger" alt="September Photo 8"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo11.jpg" class="gallery-item lightbox-trigger" alt="September Photo 11"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo19.jpg" class="gallery-item lightbox-trigger" alt="September Photo 19"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo16.jpg" class="gallery-item lightbox-trigger" alt="September Photo 16"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo17.jpg" class="gallery-item lightbox-trigger" alt="September Photo 17"></div>
+                    
+                    <!-- YouTube Video Embed Block -->
+                    <div class="gallery-item-wrapper">
+                        <iframe 
+                            class="gallery-item youtube-embed" 
+                            src="https://www.youtube.com/embed/HOa2LL10irc?si=0ZK2kY6PY8eE3dwW" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe >
+                    </div>
                 </div>
             `,
             rohini_waterfall: `
@@ -142,8 +154,8 @@
                 <p class="gallery-desc">A serene collection of images from the Rohini Waterfall trip.</p>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo8.jpeg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo22.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo8.jpeg" class="gallery-item lightbox-trigger" alt="Rohini Waterfall Photo 8"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo22.jpg" class="gallery-item lightbox-trigger" alt="Rohini Waterfall Photo 22"></div>
                 </div>
             `,
             more_collection: `
@@ -152,9 +164,9 @@
                 <p class="gallery-desc">A broader selection of my photography work, showcasing various moments and perspectives.</p>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo13.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo14.jpg" class="gallery-item lightbox-trigger"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo15.jpg" class="gallery-item lightbox-trigger"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo13.jpg" class="gallery-item lightbox-trigger" alt="Collection Photo 13"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo14.jpg" class="gallery-item lightbox-trigger" alt="Collection Photo 14"></div>
+                    <div class="gallery-item-wrapper"><img src="images/photo15.jpg" class="gallery-item lightbox-trigger" alt="Collection Photo 15"></div>
                 </div>
             `
         };
@@ -178,7 +190,7 @@
             }
 
             const targetSidebarItem = Array.from(document.querySelectorAll('.sidebar-item'))
-                .find(item => item.getAttribute('onclick').includes(`'${folderKey}'`));
+                .find(item => item.getAttribute('onclick')?.includes(`'${folderKey}'`));
             if (targetSidebarItem) targetSidebarItem.classList.add('active');
 
             grid.style.display = 'none';
@@ -194,7 +206,8 @@
             document.getElementById('explorer-content').style.display = 'none';
             
             document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
-            document.querySelector('.sidebar-list li:first-child').classList.add('active');
+            const firstSidebar = document.querySelector('.sidebar-list li:first-child');
+            if (firstSidebar) firstSidebar.classList.add('active');
         }
 
         // Binds full-screen functionality onto the active pictures
@@ -223,10 +236,12 @@
         // Mobile responsive navbar controls
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>
