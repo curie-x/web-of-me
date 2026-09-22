@@ -3,99 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shahadat Hossain | Professional Portfolio</title>
+    <title>Shahadat Hossain | $ whoami</title>
     
-    <link rel="icon" type="image" href="images/logo.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-         <a href="https://www.shahadathossain.in" class="nav-logo">
-    <img src="images/logo.png" alt="Shahadat Hossain Logo" class="nav-logo-img">
-</a>
-            
-            <button class="menu-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+    <div class="grid-overlay"></div>
+    <div class="scanline"></div>
+
+    <header class="terminal-nav-wrapper">
+        <div class="terminal-nav">
+            <div class="nav-status">
+                <span class="status-indicator"></span>
+                <span class="status-text">SYS.ONLINE // MALDA ➔ SILIGURI</span>
+            </div>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#about" class="nav-item">01.// ABOUT</a>
+                <a href="#projects" class="nav-item">02.// PROJECTS</a>
+                <a href="photography.html" class="nav-item">03.// VISUALS</a>
+                <a href="#contact" class="nav-item contact-trigger">[ CONNECT ]</a>
+            </nav>
+
+            <button class="nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i data-lucide="terminal"></i>
             </button>
-            
-            <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#purpose">Purpose</a>
-                <a href="photography.html">Photography</a>
-                <a href="email.html" class="nav-btn">Connect</a>
-            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content Container -->
-    <main class="container">
+    <main class="main-content">
         
-        <!-- Hero Section -->
-        <header class="hero-section">
-            <div class="badge">👋 Hello</div>
-            <h1><span class="emoji">👋</span> Hello, I’m Shahadat Hossain</h1>
-            <p class="subtitle">Building things for the web from a quiet corner in Samsi, Malda.</p>
-            
-
-        <!-- About Section -->
-        <section id="about" class="profile-card">
-            <h2>Welcome to My Corner of the Internet</h2>
-            <p>I come from a small, calm town called Samsi in Malda. Life here moves a bit slower—but that’s where I’ve built my dreams, step by step.</p>
-            <p>Right now, I’m pursuing my Bachelor’s in Computer Applications (BCA) from Siliguri Institute of Technology, under MAKAUT University. Moving from a small town to building interactive interfaces on the web is a journey that genuinely excites me.</p>
-        </section>
-
-        <!-- Purpose Grid Layout -->
-        <div id="purpose" class="grid-layout">
-            <section class="profile-card">
-                <h2>🌱 Why This Website?</h2>
-                <p>Honestly… this is my very first website. This page is a starting point—a space where I can document my ideas, track my learning journey, and eventually showcase the software projects I build in the future.</p>
-            </section>
-
-            <section class="profile-card">
-                <h2>💡 What’s Next?</h2>
-                <p>I’m diving deep into development, mapping out software projects that will help me learn, grow, and hopefully inspire someone else along the way. This digital space will evolve right alongside me.</p>
-            </section>
-        </div>
-
-        <!-- Contact Section -->
-        <section id="contact" class="profile-card contact-section">
-            <h2>Let's Build Something Together</h2>
-            <p>Whether you want to discuss technology, development, or photography, feel free to reach out via my social handles above or drop an email.</p>
-            <a href="email.html" class="email-btn">Drop an Email</a>
-        </section>
-<div class="social-links">
-                <a href="https://www.linkedin.com/in/shahadat-hossain-04b793372/" target="_blank" class="social-icon linkedin">LinkedIn</a>
-                <a href="https://github.com/curie-x" target="_blank" class="social-icon github">GitHub</a>
-                <a href="https://www.instagram.com/shahadat.exe/" target="_blank" class="social-icon instagram">Instagram</a>
-                <a href="https://www.facebook.com/ShahadatHossainFB" target="_blank" class="social-icon facebook">Facebook</a>
-                <a href="https://discord.gg/VeESkT3aX8" target="_blank" class="social-icon discord">Discord</a>
+        <section class="hero-section">
+            <div class="hero-left">
+                <div class="terminal-tag">&lt;dev_mode: active&gt;</div>
+                <h1 class="glitch-title">SHAHADAT<br>HOSSAIN</h1>
+                <p class="hero-desc">
+                    Undergrad technologist &amp; interface experimenter. Crafting software logic from Samsi to Siliguri.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="cyber-btn primary-btn">
+                        <span>INITIATE_CONTACT</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="https://github.com/curie-x" target="_blank" class="cyber-btn secondary-btn">
+                        <i data-lucide="github"></i>
+                        <span>SOURCE_CODE</span>
+                    </a>
+                </div>
             </div>
+
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="traffic-lights">
+                        <span class="dot close"></span>
+                        <span class="dot min"></span>
+                        <span class="dot max"></span>
+                    </div>
+                    <span class="window-title">bash — curie-x@host: ~</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="term-line"><span class="prompt">$</span> cat profile.json</p>
+                    <pre class="term-output"><code>{
+  "name": "Shahadat Hossain",
+  "alias": "curie-x",
+  "education": "BCA @ SIT Siliguri (MAKAUT)",
+  "origin": "Samsi, Malda, WB",
+  "skills": ["C", "Web Development", "UI Design"],
+  "status": "Engineering next-gen web systems."
+}</code></pre>
+                    <p class="term-line typing-line">
+                        <span class="prompt">$</span> <span id="typedText"></span><span class="cursor">_</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="matrix-section" id="about">
+            <div class="matrix-box bio-box">
+                <div class="box-num">01</div>
+                <h2>THE ORIGIN &amp; TRAJECTORY</h2>
+                <p>
+                    Starting from Samsi, Malda, I dove into computing out of curiosity for how modern digital systems interact. Currently pursuing my Bachelor's in Computer Applications (BCA) at Siliguri Institute of Technology.
+                </p>
+                <p>
+                    This portfolio serves as the command center for all my future open-source releases, algorithmic learning, and full-stack software experiments.
+                </p>
+            </div>
+
+            <div class="matrix-box stats-box">
+                <div class="box-num">02</div>
+                <h2>CORE CAPABILITIES</h2>
+                <div class="skill-grid">
+                    <div class="skill-node">
+                        <i data-lucide="code"></i>
+                        <span>C &amp; Core Logic</span>
+                    </div>
+                    <div class="skill-node">
+                        <i data-lucide="layout"></i>
+                        <span>Responsive UI/UX</span>
+                    </div>
+                    <div class="skill-node">
+                        <i data-lucide="cpu"></i>
+                        <span>Computer Apps</span>
+                    </div>
+                    <div class="skill-node">
+                        <i data-lucide="camera"></i>
+                        <span>Creative Visuals</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+<section class="projects-section" id="projects">
+            <div class="section-header">
+                <div class="terminal-tag">&lt;deployments: repositories / live_builds&gt;</div>
+                <div class="header-split">
+                    <h2 class="section-title">FEATURED_BUILDS</h2>
+                    <div class="section-meta-count">INDEX: 03 RELEASES</div>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                
+                <article class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-num">01.PROJ</span>
+                        <span class="project-badge status-prod">● PRODUCTION</span>
+                    </div>
+
+                    <div class="project-body">
+                        <h3 class="project-title"> Focused for Steady &amp; UI Design </h3>
+                        <p class="project-desc">
+                            A lightweight, responsive, and visually engaging website built with HTML, CSS, and JavaScript. It features AI, Music, notes, Study material interface, A simple personal productivity space to plan your day, stay focused, jot down ideas, and enjoy your favorite audio—all in one place.
+                        </p>
+                        
+                        <div class="tech-pills">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Lucide Icons</span>
+                        </div>
+                    </div>
+
+                    <div class="project-footer">
+                        <a href="https://github.com/curie-x" target="_blank" class="project-link" title="Source Code">
+                            <i data-lucide="github"></i>
+                            <span>SOURCE</span>
+                        </a>
+                        <a href="https://curiex.in/" class="project-link link-accent" title="Live Preview">
+                            <span>LIVE_DEMO</span>
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-num">02.PROJ</span>
+                        <span class="project-badge status-dev">▲ DEV_BUILD</span>
+                    </div>
+
+                    <div class="project-body">
+                        <h3 class="project-title">C System Utilities &amp; CLI Toolkit</h3>
+                        <p class="project-desc">
+                            A collection of low-level algorithms, custom data structures, and terminal tools written in pure C for memory management and algorithmic benchmarking.
+                        </p>
+                        
+                        <div class="tech-pills">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">GCC</span>
+                            <span class="tech-tag">Makefile</span>
+                            <span class="tech-tag">Linux CLI</span>
+                        </div>
+                    </div>
+
+                    <div class="project-footer">
+                        <a href="https://github.com/curie-x" target="_blank" class="project-link" title="Source Code">
+                            <i data-lucide="github"></i>
+                            <span>SOURCE</span>
+                        </a>
+                        <span class="project-link-disabled">
+                            <span>IN_PROGRESS</span>
+                            <i data-lucide="lock"></i>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="project-card placeholder-card">
+                    <div class="project-card-header">
+                        <span class="project-num">03.PROJ</span>
+                        <span class="project-badge status-alpha">◼ ROADMAP</span>
+                    </div>
+
+                    <div class="project-body">
+                        <h3 class="project-title">Next Core Architecture</h3>
+                        <p class="project-desc">
+                            Currently mapping out a full-stack database application. Ready to integrate APIs, user states, and interactive dashboards.
+                        </p>
+                        
+                        <div class="tech-pills">
+                            <span class="tech-tag">Full-Stack</span>
+                            <span class="tech-tag">API</span>
+                            <span class="tech-tag">Database</span>
+                        </div>
+                    </div>
+
+                    <div class="project-footer">
+                        <span class="project-link-disabled">
+                            <i data-lucide="git-branch"></i>
+                            <span>QUEUED_RELEASE</span>
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+        <section class="connect-matrix" id="contact">
+            <div class="connect-header">
+                <h2>CONNECT_WITH_ME</h2>
+                <p>Feel free to ping me for projects, code discussions, or collaboration.</p>
+            </div>
+
+            <div class="social-channels">
+                <a href="https://github.com/curie-x" target="_blank" class="channel-card">
+                    <i data-lucide="github"></i>
+                    <span>curie-x</span>
+                </a>
+                <a href="https://www.linkedin.com/in/shahadat-hossain-04b793372/" target="_blank" class="channel-card">
+                    <i data-lucide="linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/shahadat.exe/" target="_blank" class="channel-card">
+                    <i data-lucide="instagram"></i>
+                    <span>@shahadat.exe</span>
+                </a>
+                <a href="https://discord.gg/VeESkT3aX8" target="_blank" class="channel-card">
+                    <i data-lucide="message-square"></i>
+                    <span>Discord Server</span>
+                </a>
+                <a href="/email.html" class="channel-card email-card">
+                    <i data-lucide="send"></i>
+                    <span>Send Email</span>
+                </a>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Shahadat Hossain. All rights reserved.</p>
+    <footer class="terminal-footer">
+        <div>&copy; 2026 SHAHADAT HOSSAIN // ALL RIGHTS RESERVED.</div>
+        <div class="sys-code">LATENCY: 12ms [STABLE]</div>
     </footer>
 
     <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        lucide.createIcons();
+
+        // Terminal Typing Effect
+        const words = ["gcc -o project main.c", "git commit -m 'deploying future'", "npm run build"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedElement = document.getElementById("typedText");
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typedElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                speed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                speed = 500;
+            }
+
+            setTimeout(type, speed);
+        }
+        type();
+
+        // Mobile Nav Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
         });
     </script>
 </body>
