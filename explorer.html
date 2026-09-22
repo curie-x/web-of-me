@@ -3,245 +3,498 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Explorer | Shahadat Hossain</title>
+    <title>Shahadat Hossain | DRIVE_D://EXPLORER</title>
     
-    <!-- Cleaned standard favicon browser signature link -->
-    <link rel="icon" type="image" href="images/logo.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Shared Sticky Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="https://www.shahadathossain.in" class="nav-logo">
-                <img src="images/logo.png" alt="Shahadat Hossain Logo" class="nav-logo-img">
-            </a>
-            
-            <button class="menu-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#purpose">Purpose</a>
-                <a href="photography.html">Photography</a>
-                <a href="email.html" class="nav-btn">Connect</a>
+    <div class="grid-overlay"></div>
+    <div class="scanline"></div>
+
+    <header class="terminal-nav-wrapper">
+        <div class="terminal-nav">
+            <div class="nav-status">
+                <span class="status-indicator"></span>
+                <span class="status-text">STORAGE.MNT // DRIVE_D [READ_ONLY]</span>
             </div>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">00.// HOME</a>
+                <a href="index.html#about" class="nav-item">01.// ABOUT</a>
+                <a href="photography.html" class="nav-item">02.// VISUALS</a>
+                <a href="email.html" class="nav-item contact-trigger">[ CONNECT ]</a>
+            </nav>
+
+            <button class="nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i data-lucide="terminal"></i>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Explorer Workspace -->
-    <main class="container">
-        <header class="hero-section">
-            <div class="badge">System Root</div>
-            <h1><span class="emoji">📂</span> Shahadat's Drive (D:)</h1>
-            <p class="subtitle">Click through the directories below to explore my profile data dynamically.</p>
-        </header>
+    <main class="main-content">
+        
+        <section class="gallery-hero">
+            <div class="terminal-tag">&lt;fs_type: ext4 / mount: /mnt/drive_d&gt;</div>
+            <h1 class="glitch-title">FILE SYSTEM<br>NAVIGATOR</h1>
+            <p class="hero-desc">
+                Browse stored directories, visual archives, road logs, and captured media straight from the local drive matrix.
+            </p>
+        </section>
 
-        <div class="explorer-window">
-            <aside class="explorer-sidebar">
-                <div class="sidebar-title">Quick access</div>
-                <ul class="sidebar-list">
-                    <li class="sidebar-item active" onclick="openFolder('root')">💻 This PC</li>
-                </ul>
-            </aside>
-
-            <section class="explorer-main">
-                <!-- Main Folder Display Grid -->
-                <div id="explorer-grid" class="explorer-grid">
-                    
-                    <div class="folder-item" onclick="openFolder('more_collection')">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-name">More Collection</div>
-                    </div>
-                    <div class="folder-item" onclick="openFolder('soft_september')">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-name">Soft September Trip</div>
-                    </div>
-                    <div class="folder-item" onclick="openFolder('april_ride')">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-name">April Ride</div>
-                    </div>
-                    <div class="folder-item" onclick="openFolder('rohini_waterfall')">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-name">Rohini Waterfall</div>
-                    </div>
-                    <div class="folder-item" onclick="openFolder('february_darjiling')">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-name">February's Darjiling</div>
-                    </div>
+        <div class="os-window">
+            
+            <div class="os-titlebar">
+                <div class="traffic-lights">
+                    <span class="dot close"></span>
+                    <span class="dot min"></span>
+                    <span class="dot max"></span>
                 </div>
-
-                <!-- Dynamic Content Display -->
-                <div id="explorer-content" class="explorer-content" style="display: none;">
-                    <button class="back-btn" onclick="goBackToGrid()">&larr; Back to Drive (D:)</button>
-                    <div id="content-body"></div>
+                <div class="os-breadcrumbs">
+                    <span class="prompt">$</span> <span id="currentPath">D:/root</span>
                 </div>
+                <div class="os-window-meta">FS: READY</div>
+            </div>
+
+            <div class="os-body">
                 
-            </section>
+                <aside class="os-sidebar">
+                    <div class="sidebar-heading">
+                        <i data-lucide="hard-drive"></i>
+                        <span>VOLUMES</span>
+                    </div>
+                    <ul class="directory-tree">
+                        <li class="tree-item active" onclick="openFolder('root')">
+                            <i data-lucide="corner-down-right"></i>
+                            <span>D:/ (System Root)</span>
+                        </li>
+                    </ul>
+
+                    <div class="sidebar-heading" style="margin-top: 1.5rem;">
+                        <i data-lucide="folder-tree"></i>
+                        <span>DIRECTORIES</span>
+                    </div>
+                    <ul class="directory-tree">
+                        <li class="tree-item" data-folder="february_darjiling" onclick="openFolder('february_darjiling')">
+                            <i data-lucide="folder"></i>
+                            <span>february_darjiling</span>
+                        </li>
+                        <li class="tree-item" data-folder="april_ride" onclick="openFolder('april_ride')">
+                            <i data-lucide="folder"></i>
+                            <span>april_ride</span>
+                        </li>
+                        <li class="tree-item" data-folder="soft_september" onclick="openFolder('soft_september')">
+                            <i data-lucide="folder"></i>
+                            <span>soft_september</span>
+                        </li>
+                        <li class="tree-item" data-folder="rohini_waterfall" onclick="openFolder('rohini_waterfall')">
+                            <i data-lucide="folder"></i>
+                            <span>rohini_waterfall</span>
+                        </li>
+                        <li class="tree-item" data-folder="more_collection" onclick="openFolder('more_collection')">
+                            <i data-lucide="folder"></i>
+                            <span>more_collection</span>
+                        </li>
+                    </ul>
+                </aside>
+
+                <section class="os-viewport">
+                    
+                    <div id="explorer-grid" class="folder-catalog">
+                        
+                        <div class="folder-tile" onclick="openFolder('february_darjiling')">
+                            <div class="folder-tile-icon"><i data-lucide="folder"></i></div>
+                            <div class="folder-tile-info">
+                                <span class="folder-tile-name">february_darjiling/</span>
+                                <span class="folder-tile-count">3 Files</span>
+                            </div>
+                        </div>
+
+                        <div class="folder-tile" onclick="openFolder('april_ride')">
+                            <div class="folder-tile-icon"><i data-lucide="folder"></i></div>
+                            <div class="folder-tile-info">
+                                <span class="folder-tile-name">april_ride/</span>
+                                <span class="folder-tile-count">3 Files</span>
+                            </div>
+                        </div>
+
+                        <div class="folder-tile" onclick="openFolder('soft_september')">
+                            <div class="folder-tile-icon"><i data-lucide="folder"></i></div>
+                            <div class="folder-tile-info">
+                                <span class="folder-tile-name">soft_september/</span>
+                                <span class="folder-tile-count">5 Files + 1 Stream</span>
+                            </div>
+                        </div>
+
+                        <div class="folder-tile" onclick="openFolder('rohini_waterfall')">
+                            <div class="folder-tile-icon"><i data-lucide="folder"></i></div>
+                            <div class="folder-tile-info">
+                                <span class="folder-tile-name">rohini_waterfall/</span>
+                                <span class="folder-tile-count">2 Files</span>
+                            </div>
+                        </div>
+
+                        <div class="folder-tile" onclick="openFolder('more_collection')">
+                            <div class="folder-tile-icon"><i data-lucide="folder"></i></div>
+                            <div class="folder-tile-info">
+                                <span class="folder-tile-name">more_collection/</span>
+                                <span class="folder-tile-count">5 Files</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="explorer-content" class="directory-view" style="display: none;">
+                        <div class="view-actions">
+                            <button class="cyber-btn secondary-btn back-btn" onclick="goBackToGrid()">
+                                <i data-lucide="arrow-left"></i>
+                                <span>CD .. (RETURN_ROOT)</span>
+                            </button>
+                            <span class="directory-status-tag" id="folderMeta">BUFFER: LOADED</span>
+                        </div>
+                        <div id="content-body" class="content-body"></div>
+                    </div>
+
+                </section>
+
+            </div>
+            
+            <div class="os-statusbar">
+                <div id="statusItems">OBJECTS: 5 DIRECTORIES</div>
+                <div class="status-storage">FREE: 412.8 GB / TOTAL: 512 GB</div>
+            </div>
+
         </div>
+
     </main>
 
-    <!-- Full Screen Lightbox Modal Structure -->
-    <div id="lightboxModal" class="lightbox-modal">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" alt="Full screen view">
-        <div id="lightboxCaption" class="lightbox-caption"></div>
+    <div id="lightboxModal" class="cyber-modal">
+        <div class="modal-viewport">
+            <div class="modal-bar">
+                <span class="modal-status">[IMAGE_BUFFER]</span>
+                <button class="modal-close" id="lightboxClose" aria-label="Close Preview">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-image-container">
+                <img id="lightboxImg" src="" alt="Expanded View">
+            </div>
+            <div class="modal-caption" id="lightboxCaption"></div>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Shahadat Hossain. All rights reserved.</p>
+    <footer class="terminal-footer">
+        <div>&copy; 2026 SHAHADAT HOSSAIN // ROOT ARCHIVE.</div>
+        <div class="sys-code">I/O SPEED: OPTIMAL</div>
     </footer>
 
     <script>
+        lucide.createIcons();
+
         // Database storing directory components
         const fileSystem = {
-            february_darjiling: `
-                <h2>🖼️ February's Darjiling</h2>
-                <hr class="explorer-hr">
-                <p class="gallery-desc">A premium selection of highlight captures featured directly out of my drive root layout.</p>
-
-                <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo3.jpg" class="gallery-item lightbox-trigger" alt="Darjiling Photo 3"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo4.jpg" class="gallery-item lightbox-trigger" alt="Darjiling Photo 4"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo7.jpg" class="gallery-item lightbox-trigger" alt="Darjiling Photo 7"></div>
-                </div>
-            `,
-            april_ride: `
-                <h2>🛵 April Ride </h2>
-                <hr class="explorer-hr">
-                <p class="gallery-desc">Moments captured during my travels throughout April.</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo21.jpg" class="gallery-item lightbox-trigger" alt="April Ride Photo 21"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo10.jpg" class="gallery-item lightbox-trigger" alt="April Ride Photo 10"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo9.jpg" class="gallery-item lightbox-trigger" alt="April Ride Photo 9"></div>
-                </div>
-            `,
-            soft_september: `
-                <h2>🎠 Soft September Trip</h2>
-                <hr class="explorer-hr">
-                <p class="gallery-desc">Memories and scenic captures from my September adventures.</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo8.jpg" class="gallery-item lightbox-trigger" alt="September Photo 8"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo11.jpg" class="gallery-item lightbox-trigger" alt="September Photo 11"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo19.jpg" class="gallery-item lightbox-trigger" alt="September Photo 19"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo16.jpg" class="gallery-item lightbox-trigger" alt="September Photo 16"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo17.jpg" class="gallery-item lightbox-trigger" alt="September Photo 17"></div>
-                    
-                    <!-- YouTube Video Embed Block -->
-                    <div class="gallery-item-wrapper">
-                        <iframe 
-                            class="gallery-item youtube-embed" 
-                            src="https://www.youtube.com/embed/HOa2LL10irc?si=0ZK2kY6PY8eE3dwW" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe >
+            february_darjiling: {
+                title: "february_darjiling/",
+                path: "D:/february_darjiling",
+                desc: "A premium selection of highlight captures featured directly out of Darjeeling trips.",
+                itemsCount: "3 OBJECTS",
+                html: `
+                    <div class="gallery-matrix">
+                        <div class="photo-card lightbox-trigger" data-img="images/photo3.jpg" data-caption="Darjeeling Fog & Canopy">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo3.jpg" alt="Darjeeling Fog & Canopy" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">DARJ_01.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo4.jpg" data-caption="Darjeeling Ridge Line">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo4.jpg" alt="Darjeeling Ridge Line" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">DARJ_02.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo7.jpg" data-caption="Morning Mist Over Darjeeling">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo7.jpg" alt="Morning Mist Over Darjeeling" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">DARJ_03.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
                     </div>
-                </div>
-            `,
-            rohini_waterfall: `
-                <h2>🌊 Rohini Waterfall</h2>
-                <hr class="explorer-hr">
-                <p class="gallery-desc">A serene collection of images from the Rohini Waterfall trip.</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo8.jpeg" class="gallery-item lightbox-trigger" alt="Rohini Waterfall Photo 8"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo22.jpg" class="gallery-item lightbox-trigger" alt="Rohini Waterfall Photo 22"></div>
-                </div>
-            `,
-            more_collection: `
-                <h2>📸 More Collection</h2>
-                <hr class="explorer-hr">
-                <p class="gallery-desc">A broader selection of my photography work, showcasing various moments and perspectives.</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item-wrapper"><img src="images/photo13.jpg" class="gallery-item lightbox-trigger" alt="Collection Photo 13"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo14.jpg" class="gallery-item lightbox-trigger" alt="Collection Photo 14"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo15.jpg" class="gallery-item lightbox-trigger" alt="Collection Photo 15"></div>
-                    <div class="gallery-item-wrapper"><img src="images/photo24.png" class="gallery-item lightbox-trigger" alt="Collection Photo 18"></div>
-                   <div class="gallery-item-wrapper"><img src="images/photo23.jpg" class="gallery-item lightbox-trigger" alt="Collection Photo 18"></div>
+                `
+            },
+            april_ride: {
+                title: "april_ride/",
+                path: "D:/april_ride",
+                desc: "Moments and landscapes captured during my spring travel adventures.",
+                itemsCount: "3 OBJECTS",
+                html: `
+                    <div class="gallery-matrix">
+                        <div class="photo-card lightbox-trigger" data-img="images/photo21.jpg" data-caption="April Ride Horizon">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo21.jpg" alt="April Ride Horizon" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">RIDE_01.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo10.jpg" data-caption="Open Highway Curves">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo10.jpg" alt="Open Highway Curves" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">RIDE_02.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo9.jpg" data-caption="Sunset Stoppage">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo9.jpg" alt="Sunset Stoppage" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">RIDE_03.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
                     </div>
-            `
+                `
+            },
+            soft_september: {
+                title: "soft_september/",
+                path: "D:/soft_september",
+                desc: "Memories, quiet road perspectives, and recorded visual logs from September.",
+                itemsCount: "6 OBJECTS",
+                html: `
+                    <div class="gallery-matrix">
+                        <div class="photo-card lightbox-trigger" data-img="images/photo8.jpg" data-caption="September Dusk">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo8.jpg" alt="September Dusk" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">SEPT_01.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo11.jpg" data-caption="Canopy Shade">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo11.jpg" alt="Canopy Shade" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">SEPT_02.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo19.jpg" data-caption="Rural Textures">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo19.jpg" alt="Rural Textures" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">SEPT_03.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo16.jpg" data-caption="Clear Skies">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo16.jpg" alt="Clear Skies" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">SEPT_04.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo17.jpg" data-caption="Reflections">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo17.jpg" alt="Reflections" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">SEPT_05.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card stream-card">
+                            <div class="photo-viewfinder embed-container">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/HOa2LL10irc?si=0ZK2kY6PY8eE3dwW" 
+                                    title="Visual Feed Player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag" style="color: #ff5f56;">STREAM_01.MP4</span><span>LIVE_EMBED</span></div>
+                        </div>
+                    </div>
+                `
+            },
+            rohini_waterfall: {
+                title: "rohini_waterfall/",
+                path: "D:/rohini_waterfall",
+                desc: "A serene collection of images from the Rohini Waterfall expedition.",
+                itemsCount: "2 OBJECTS",
+                html: `
+                    <div class="gallery-matrix">
+                        <div class="photo-card lightbox-trigger" data-img="images/photo8.jpeg" data-caption="Rohini Cascades">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo8.jpeg" alt="Rohini Cascades" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">ROHINI_01.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo22.jpg" data-caption="Stone & Water Rhythm">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo22.jpg" alt="Stone & Water Rhythm" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">ROHINI_02.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                    </div>
+                `
+            },
+            more_collection: {
+                title: "more_collection/",
+                path: "D:/more_collection",
+                desc: "Extended photographic vault covering everyday moments, light studies, and street observations.",
+                itemsCount: "5 OBJECTS",
+                html: `
+                    <div class="gallery-matrix">
+                        <div class="photo-card lightbox-trigger" data-img="images/photo13.jpg" data-caption="Archive Frame #13">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo13.jpg" alt="Archive Frame 13" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">ARCH_13.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo14.jpg" data-caption="Archive Frame #14">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo14.jpg" alt="Archive Frame 14" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">ARCH_14.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo15.jpg" data-caption="Archive Frame #15">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo15.jpg" alt="Archive Frame 15" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">ARCH_15.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo24.png" data-caption="Archive Graphic #24">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo24.png" alt="Archive Graphic 24" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">ARCH_24.PNG</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                        <div class="photo-card lightbox-trigger" data-img="images/photo23.jpg" data-caption="Archive Frame #23">
+                            <div class="photo-viewfinder">
+                                <span class="vf-corner top-left"></span><span class="vf-corner top-right"></span>
+                                <span class="vf-corner bottom-left"></span><span class="vf-corner bottom-right"></span>
+                                <img src="images/photo23.jpg" alt="Archive Frame 23" loading="lazy">
+                            </div>
+                            <div class="photo-meta"><span class="meta-tag">ARCH_23.RAW</span><span><i data-lucide="maximize-2"></i></span></div>
+                        </div>
+                    </div>
+                `
+            }
         };
 
-        // Modal elements cache
-        const lightbox = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const closeBtn = document.querySelector('.lightbox-close');
+        // Navigation state
+        const currentPath = document.getElementById('currentPath');
+        const grid = document.getElementById('explorer-grid');
+        const contentDiv = document.getElementById('explorer-content');
+        const contentBody = document.getElementById('content-body');
+        const statusItems = document.getElementById('statusItems');
 
         function openFolder(folderKey) {
-            const grid = document.getElementById('explorer-grid');
-            const contentDiv = document.getElementById('explorer-content');
-            const contentBody = document.getElementById('content-body');
-            
-            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
-            
+            document.querySelectorAll('.tree-item').forEach(item => item.classList.remove('active'));
+
             if (folderKey === 'root') {
                 goBackToGrid();
                 return;
             }
 
-            const targetSidebarItem = Array.from(document.querySelectorAll('.sidebar-item'))
-                .find(item => item.getAttribute('onclick')?.includes(`'${folderKey}'`));
-            if (targetSidebarItem) targetSidebarItem.classList.add('active');
+            const targetTreeItem = document.querySelector(`.tree-item[data-folder="${folderKey}"]`);
+            if (targetTreeItem) targetTreeItem.classList.add('active');
+
+            const folder = fileSystem[folderKey];
+            currentPath.textContent = folder.path;
+            statusItems.textContent = `OBJECTS: ${folder.itemsCount}`;
 
             grid.style.display = 'none';
             contentDiv.style.display = 'block';
-            contentBody.innerHTML = fileSystem[folderKey];
+            contentBody.innerHTML = `
+                <div class="folder-header-box">
+                    <h2>${folder.title}</h2>
+                    <p class="folder-desc-text">${folder.desc}</p>
+                </div>
+                ${folder.html}
+            `;
 
-            // Setup listeners dynamically for the new elements loaded inside the folder
+            lucide.createIcons();
             setupLightboxTriggers();
         }
 
         function goBackToGrid() {
-            document.getElementById('explorer-grid').style.display = 'grid';
-            document.getElementById('explorer-content').style.display = 'none';
-            
-            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
-            const firstSidebar = document.querySelector('.sidebar-list li:first-child');
-            if (firstSidebar) firstSidebar.classList.add('active');
+            grid.style.display = 'grid';
+            contentDiv.style.display = 'none';
+            currentPath.textContent = 'D:/root';
+            statusItems.textContent = 'OBJECTS: 5 DIRECTORIES';
+
+            document.querySelectorAll('.tree-item').forEach(item => item.classList.remove('active'));
+            const rootTreeItem = document.querySelector('.directory-tree .tree-item:first-child');
+            if (rootTreeItem) rootTreeItem.classList.add('active');
         }
 
-        // Binds full-screen functionality onto the active pictures
+        // Lightbox Functions
+        const lightbox = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const closeBtn = document.getElementById('lightboxClose');
+
         function setupLightboxTriggers() {
-            document.querySelectorAll('.lightbox-trigger').forEach(img => {
-                img.onclick = function() {
-                    lightbox.style.display = "flex";
-                    lightboxImg.src = this.src;
-                    lightboxCaption.innerHTML = this.alt || "Shahadat Hossain © 2026";
-                }
+            document.querySelectorAll('.lightbox-trigger').forEach(card => {
+                card.onclick = function() {
+                    const src = card.getAttribute('data-img');
+                    const caption = card.getAttribute('data-caption');
+                    lightbox.classList.add('active');
+                    lightboxImg.src = src;
+                    lightboxCaption.innerHTML = caption || "Shahadat Hossain © 2026 Archive Frame";
+                    document.body.style.overflow = 'hidden';
+                };
             });
         }
 
-        // Close full screen on close-button tap
-        closeBtn.onclick = function() {
-            lightbox.style.display = "none";
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // Close full screen if background is clicked
-        lightbox.onclick = function(e) {
-            if (e.target !== lightboxImg && e.target !== lightboxCaption) {
-                lightbox.style.display = "none";
-            }
-        }
+        closeBtn.onclick = closeLightbox;
+        lightbox.onclick = (e) => {
+            if (e.target === lightbox) closeLightbox();
+        };
 
-        // Mobile responsive navbar controls
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        // Mobile Nav Drawer Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
         if (menuToggle && navLinks) {
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
-                menuToggle.classList.toggle('active');
             });
         }
     </script>
